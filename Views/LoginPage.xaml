@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Catawba.Views.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Catawba.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="900" Background="White">
+
+    <Grid>
+        <Grid IsEnabled="{Binding windowIsEnabled}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--Welcome Banner-->
+            <WrapPanel Background="#FFDDECA8" Height="118" VerticalAlignment="Top">
+                <Grid Height="118" Width="800">
+                    <Label x:Name ="greetingText" Content="Root Works" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" FontFamily="Bahnschrift SemiBold" Margin="6,0,0,0" Height="98" Width="268"/>
+                </Grid>
+            </WrapPanel>
+
+            <!--Login Credentials Fields-->
+            <Label x:Name="lbl_err_msg" Content="Incorrect username or password" Visibility="{Binding visibility}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="286" FontSize="16" FontFamily="Bahnschrift" Margin="6,150,0,0" Background="White" Foreground="#FFFE0404"/>
+            <Label x:Name="lbl_username" Content="Username:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="90" FontSize="16" FontFamily="Bahnschrift" Margin="6,192,0,0"/>
+            <Label x:Name="label_Copy" Content="Password: " HorizontalAlignment="Left" Margin="6,236,0,0" VerticalAlignment="Top" Height="28" Width="83" FontSize="16" FontFamily="Bahnschrift"/>
+            <TextBox x:Name="username_txt_box" Text="{Binding loginAccount.UserName}" Margin="114,192,0,0" Panel.ZIndex="1" TextWrapping="Wrap" VerticalContentAlignment="Center" VerticalAlignment="Top" FontSize="16" Height="28" HorizontalAlignment="Left" Width="178"/>
+            <PasswordBox x:Name="pw_text_box" PasswordChanged="PasswordChanged" VerticalContentAlignment="Center" Margin="114,236,0,0" Panel.ZIndex="1" VerticalAlignment="Top" Height="28" HorizontalAlignment="Left" Width="178"/>
+
+            <!--Logo-->
+            <Image Stretch="Uniform" Margin="310,184,133,22" Width="457">
+                <Image.Source>
+                    <BitmapImage UriSource="/Images/RootWorksLogo.png"/>
+                </Image.Source>
+            </Image>
+            <!--Login Button-->
+            <Button x:Name="login_btn" Style="{StaticResource Button}" Content="Login" Command="{Binding LoginCommand}" Width="104" Height="39" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,280,0,0" IsDefault="True"/>
+        </Grid>
+
+        <!-- Popup display-->
+        <DockPanel LastChildFill="False" Height="155" VerticalAlignment="Top" Margin="0,30,0,0" d:IsHidden="true">
+            <Border BorderThickness="1" DockPanel.Dock="Top" Width="358" Height="221" Visibility="{Binding popupVisibility}">
+                <local:PopupDisplay Height="150" Margin="-42,-37,-83,37"/>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="Catawba.Views.ClientDataGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Catawba.Views" xmlns:viewmodels="clr-namespace:Catawba.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000">
+
+    <Grid Height="350" VerticalAlignment="Bottom">
+        <Grid Margin="0,0,0,-7" Background="#FFF5F0F0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="297*"/>
+                <RowDefinition Height="53*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="212*"/>
+                <ColumnDefinition Width="225*"/>
+                <ColumnDefinition Width="238*"/>
+                <ColumnDefinition Width="325*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Labels for Personal Section -->
+            <Label x:Name="lb_personal" Content="Personal Information" Style="{StaticResource label}" HorizontalAlignment="Left" Margin="4,6,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+            <Border BorderThickness="1" BorderBrush="#FFC5DA7B" Margin="4,32,10,269" Background="Black"/>
+            <Label Name="lb_date" Content="Date:" Style="{StaticResource label}" Margin="1,39,165,234" Height="30" />
+            <Label Name="lb_address" Content="Address:" Style="{StaticResource label}" Margin="1,61,139,199" Height="30" />
+            <Label Name="lb_pobox" Content="P.O. Box:" Style="{StaticResource label}" Margin="1,0,139,82" Height="30" />
+            <Label Name="lb_apt" Content="Apt Num:" Style="{StaticResource label}" Margin="1,120,139,153" Height="30" />
+            <Label Name="lb_state" Content="State:" Style="{StaticResource label}" Margin="1,146,162,127" Height="30" />
+            <Label Name="lb_city" Content="City:" Style="{StaticResource label}" Margin="1,196,174,77" Height="30" />
+            <Label Name="lb_phone" Content="Phone # :" Style="{StaticResource label}" Margin="1,222,136,51" Height="30" />
+            <Label Name="lb_county" Content="County:" Style="{StaticResource label}" Margin="1,172,150,101" Height="30" />
+            <Label Name="lb_income" Content="Income:" Style="{StaticResource label}" Margin="1,247,150,26" Height="30" />
+            <Label Name="lb_zipcode" Content="Zip-Code:" Style="{StaticResource label}" Margin="1,275,136,52" Height="30" Grid.RowSpan="2" />
+
+
+            <!-- Labels for Personal Data Section -->
+            <Label x:Name="lb_dateData" Content="{Binding DateMet}" Style="{StaticResource label}" Height="30" Margin="52,0,10,194"/>
+            <Label x:Name="lb_addressData" Content="{Binding Address}" Style="{StaticResource label}" Margin="73,65,10,199" VerticalAlignment="Top" Height="30"/>
+            <Label x:Name="lb_poboxData" Content="{Binding PoBox}" Style="{StaticResource label}" Height="30" Margin="73,0,10,82"/>
+            <Label x:Name="lb_aptData" Content="{Binding AptNum}" Style="{StaticResource label}" Height="30" Margin="73,120,10,153"/>
+            <Label x:Name="lb_stateData" Content="{Binding State}" Style="{StaticResource label}" Margin="52,146,10,127" VerticalAlignment="Top" Height="29"/>
+            <Label x:Name="lb_countyData" Content="{Binding County}" Style="{StaticResource label}" Margin="62,172,10,101" VerticalAlignment="Top" Height="29"/>
+            <Label x:Name="lb_cityData" Content="{Binding City}" Style="{StaticResource label}" Margin="38,196,14,77" VerticalAlignment="Top" Height="28"/>
+            <Label x:Name="lb_incomeData" Content="{Binding Income}" Style="{StaticResource label}" Margin="66,247,13,26" VerticalAlignment="Top" Height="28"/>
+            <Label x:Name="lb_phoneData" Content="{Binding PhoneNumber}" Style="{StaticResource label}" Margin="73,222,10,51" VerticalAlignment="Top" Height="28"/>
+            <Label x:Name="lb_zipcodeData" Content="{Binding Zipcode}" Style="{StaticResource label}" Margin="76,274,10,0" VerticalAlignment="Top" Height="28"/>
+
+            <!-- Labels for Status Section -->
+            <Label x:Name="lb_status" Content="Statuses" Style="{StaticResource label}" Grid.Column="1" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" Width="150" Height="28"/>
+            <Border BorderThickness="1" BorderBrush="#FFC5DA7B" Margin="2,32,11,269" Background="Black" Grid.Column="1"/>
+            <Label Name="lb_marital" Content="Marital Status:" Style="{StaticResource label}" Margin="2,126,116,95" Grid.Column="1" />
+            <Label Name="lb_medicare" Content="Medicare Status:" Style="{StaticResource label}" Margin="2,98,98,119" Grid.Column="1" />
+            <Label Name="lb_Medicaid" Content="Medicaid Status:" Style="{StaticResource label}" Margin="2,67,98,153" Grid.Column="1" />
+            <Label Name="lb_socialWork" Content="Social Work Status:" Style="{StaticResource label}" Margin="2,36,82,182" Grid.Column="1" />
+            <Label Name="lb_household" Content="Household Members:" Style="{StaticResource label}" Margin="0,0,60,24" Height="30" Grid.Row="1"/>
+
+            <!-- Labels for Status Data Section -->
+            <Label x:Name="lb_householdData" Content="{Binding HouseholdMembers}" Style="{StaticResource label}" Margin="152,0,10,24" VerticalAlignment="Top" Height="30" Grid.Row="1"/>
+            <Label x:Name="lb_socialWorkData" Content="{Binding SocialWorkStatus}" Style="{StaticResource label}" Margin="143,36,0,0" VerticalAlignment="Top" Height="29" Grid.Column="1"/>
+            <Label x:Name="lb_MedicaidData" Content="{Binding MedicaidStatus}" Style="{StaticResource label}" Margin="127,65,16,0" VerticalAlignment="Top" Height="29" Grid.Column="1"/>
+            <Label x:Name="lb_medicareData" Content="{Binding MedicareStatus}" Style="{StaticResource label}" Margin="127,98,16,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+            <Label x:Name="lb_maritalData" Content="{Binding MaritalStatus}" Style="{StaticResource label}" Margin="109,125,34,0" VerticalAlignment="Top" Height="28" Grid.Column="1"/>
+
+            <!-- Labels for Emergency Contact Section -->
+            <Label x:Name="Econtact" Content="Emergency Contact" Style="{StaticResource label}" Margin="6,6,89,0" VerticalAlignment="Top" Height="28" Grid.Column="2"/>
+            <Border BorderThickness="1" BorderBrush="#FFC5DA7B" Grid.Column="3" Margin="10,32,103,269" Background="Black"/>
+            <Label x:Name="lb_eName" Content="Name:" Style="{StaticResource label}" Margin="6,36,180,182" Grid.Column="2" />
+            <Label x:Name="lb_ePhone" Content="Phone # :" Style="{StaticResource label}" Margin="6,66,157,152" Grid.Column="2" />
+            <Label x:Name="lb_eRelationship" Content="Relationship:" Style="{StaticResource label}" Margin="6,93,133,125" Grid.Column="2" />
+
+            <!-- Labels for Emergency Contact Data Section -->
+            <Label x:Name="lb_eNameData" Content="{Binding EContact.EmergencyFullName}" Style="{StaticResource label}" Margin="58,36,102,182" Grid.Column="2" />
+            <Label x:Name="lb_ePhoneData" Content="{Binding EContact.EmergencyPhoneNumber}" Style="{StaticResource label}" Margin="78,66,88,152" Grid.Column="2" />
+            <Label x:Name="lb_eRelationshipData" Content="{Binding EContact.EmergencyRelationship}" Style="{StaticResource label}" Margin="105,93,61,182" Grid.Column="2" />
+
+            <!-- Servics Section  -->
+            <Border BorderThickness="1" BorderBrush="#FFC5DA7B" Margin="6,32,20,269" Background="Black" Grid.Column="2"/>
+
+            <!-- Labels for Servics Section -->
+            <Label x:Name="lb_Services" Content="Services" Style="{StaticResource label}" Grid.Column="3" Margin="10,6,165,0" VerticalAlignment="Top" Height="28"/>
+            <ListView x:Name="lv_AvailableServices" Margin="10,41,0,0" ItemsSource="{Binding Services}" Background="{x:Null}" HorizontalAlignment="Left" Width="212" Height="209" VerticalAlignment="Top" Grid.Column="3" BorderBrush="{x:Null}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Focusable" Value="false"/>
+                        <Setter Property="Margin" Value="0,0,0,3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <Label x:Name="lb_notes" Content="Notes:" Style="{StaticResource label}" Margin="2,180,116,95" Grid.Column="1" />
+            <!---notes can only show up to 132-133 characters like this-->
+            <Border BorderThickness="1" BorderBrush="#FFC5DA7B" Margin="2,206,0,95" Background="Black" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="451"/>
+
+            <TextBox x:Name="lb_notes_data" IsHitTestVisible="False" Focusable="False" Text="{Binding Notes}" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="2,213,0,0" Grid.Column="1" Height="105" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Left" Width="461" Grid.RowSpan="2">
+                <TextBox.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0"/>
+                </TextBox.BorderBrush>
+            </TextBox>
+            <Border BorderThickness="1" BorderBrush="#FFC5DA7B" Margin="0,46,0,0" Background="#FFC5DA7B" Grid.ColumnSpan="4" Grid.Row="1"/>
+
+        </Grid>
+    </Grid>
+</UserControl>
